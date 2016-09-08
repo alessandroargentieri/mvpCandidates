@@ -1,0 +1,41 @@
+package mawashi.alex.basicmvp.model;
+
+
+public class CandidateModel {
+    private String email, name, surname;
+
+    public CandidateModel(String email, String name, String surname){
+        this.email = email;
+        this.name = name;
+        this.surname = surname;
+    }
+
+    public CandidateModel(){
+
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public void setSurname(String surname){
+        this.surname = surname;
+    }
+
+    public String getSurname(){
+        return surname;
+    }
+
+}
