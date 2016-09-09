@@ -2,12 +2,13 @@ package mawashi.alex.basicmvp.model;
 
 
 public class CandidateModel {
-    private String email, name, surname;
+    private String email, name, surname, course;
 
-    public CandidateModel(String email, String name, String surname){
+    public CandidateModel(String email, String name, String surname, String course){
         this.email = email;
         this.name = name;
         this.surname = surname;
+        this.course = course;
     }
 
     public CandidateModel(){
@@ -36,6 +37,14 @@ public class CandidateModel {
 
     public String getSurname(){
         return surname;
+    }
+
+    public void setCourse(String course){
+        this.course = course;
+    }
+
+    public String getCourse(){
+        return course;
     }
 
 }

@@ -23,7 +23,7 @@ public class DBModel {
 
     static public void create(Context c){
         db = c.openOrCreateDatabase("CandidatesDB", c.MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS candidates (email VARCHAR(100) PRIMARY KEY, name VARCHAR(50), surname VARCHAR(50))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS candidates (email VARCHAR(100) PRIMARY KEY, name VARCHAR(50), surname VARCHAR(50), course VARCHAR(30))");
         db.execSQL("CREATE TABLE IF NOT EXISTS courses (course_name VARCHAR(30) PRIMARY KEY, description VARCHAR(200))");
         Log.i(TAG_DBMODEL, "Creato il DB e le tabelle candidates e courses");
     }

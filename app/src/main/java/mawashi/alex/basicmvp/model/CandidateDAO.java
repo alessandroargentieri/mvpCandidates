@@ -20,7 +20,7 @@ public class CandidateDAO implements CandidateDAOInterface {
 
     @Override
     public void InsertCandidate(CandidateModel c){
-        String Query = "INSERT INTO candidates VALUES ('" + c.getEmail() + "','" + c.getName() + "','" + c.getSurname() + "')";
+        String Query = "INSERT INTO candidates VALUES ('" + c.getEmail() + "','" + c.getName() + "','" + c.getSurname() + "', '" + c.getCourse() + "')";
         try {
             DBModel.insert_query(context, Query);
             Log.i(TAG_CANDIDATE_DAO, "Insert Query correttament inviato al DBModel");
@@ -44,13 +44,14 @@ public class CandidateDAO implements CandidateDAOInterface {
                 cm.setEmail(result_select.getString(result_select.getColumnIndex("email")));
                 cm.setName(result_select.getString(result_select.getColumnIndex("name")));
                 cm.setSurname(result_select.getString(result_select.getColumnIndex("surname")));
+                cm.setCourse(result_select.getString(result_select.getColumnIndex("course")));
                 result.add(cm);
             }
         }catch(SQLException sql_e){
-            result.add(new CandidateModel("none", "none", "none"));
+            result.add(new CandidateModel("none", "none", "none", "none"));
             Log.i(TAG_CANDIDATE_DAO, sql_e.toString());
         }catch(Exception e){
-            result.add(new CandidateModel("none", "none", "none"));
+            result.add(new CandidateModel("none", "none", "none", "none"));
             Log.i(TAG_CANDIDATE_DAO, e.toString());
         }
 

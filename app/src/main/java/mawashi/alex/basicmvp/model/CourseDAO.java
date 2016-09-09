@@ -16,9 +16,7 @@ public class CourseDAO implements CourseDAOInterface{
     Context context;
 
     public CourseDAO(Context context){
-        //createDB
-        context = context;
-        DBModel.create(context);
+        this.context = context;
     }
 
     @Override
@@ -26,18 +24,20 @@ public class CourseDAO implements CourseDAOInterface{
         String Query = "INSERT INTO courses VALUES ('" + c.getCoursename() + "','" + c.getDescription() + "')";
         try {
             DBModel.insert_query(context, Query);
+            Log.i(TAG_COURSE_DAO, "inserimento Corso andato a buon fine");
         }catch(SQLException sql_e){
-            Log.i(TAG_COURSE_DAO, sql_e.toString());
+            Log.i(TAG_COURSE_DAO, "Inserimento corso non andato a buon fine: " + sql_e.toString());
         }catch(Exception e){
-            Log.i(TAG_COURSE_DAO, e.toString());
+            Log.i(TAG_COURSE_DAO, "Inserimento corso non andato a buon fine: " + e.toString());
         }
     }
 
     @Override
     public ArrayList<CourseModel> getCourses(){
-        ArrayList<CourseModel> result = null;
+        ArrayList<CourseModel> result = new ArrayList<>();
         try {
             Cursor result_select = DBModel.select_query(context, "SELECT * FROM courses");
+            Log.i(TAG_COURSE_DAO, "Lettura corsi andato a buon fine");
             for(int i=0; i<result_select.getCount(); i++){
                 result_select.moveToPosition(i);
                 CourseModel cm = new CourseModel();
@@ -47,10 +47,10 @@ public class CourseDAO implements CourseDAOInterface{
             }
         }catch(SQLException sql_e){
             result.add(new CourseModel("none", "none"));
-            Log.i(TAG_COURSE_DAO, sql_e.toString());
+            Log.i(TAG_COURSE_DAO, "Recupero corso non andato a buon fine: " + sql_e.toString());
         }catch(Exception e){
             result.add(new CourseModel("none", "none"));
-            Log.i(TAG_COURSE_DAO, e.toString());
+            Log.i(TAG_COURSE_DAO, "Recupero corso non andato a buon fine: " + e.toString());
         }
 
         return result;

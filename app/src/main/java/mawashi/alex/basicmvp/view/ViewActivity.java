@@ -31,18 +31,20 @@ public class ViewActivity extends AppCompatActivity {
         surnameEdit  = (EditText) findViewById(R.id.editSurname);
         chooseCourse = (Spinner) findViewById(R.id.spinnerChoose);
         listView     = (ListView) findViewById(R.id.list);
+        // gestisco l'evento onClick sulla riga: la classe Handler è una classe innestat nel presenter già instanziato
+        listView.setOnItemClickListener(presenter.new ListClickHandler());
 
-      //  presenter = new Presenter(this);
 
         presenter.initLista(this, listView);
-
+        presenter.fillSpinner(this, chooseCourse);
     }
 
     //button to add a Candidate
     public void Add(View v){
         presenter.addCandidate(emailEdit.getText().toString(),
                                         nameEdit.getText().toString(),
-                                        surnameEdit.getText().toString());
+                                        surnameEdit.getText().toString(),
+                                        chooseCourse.getSelectedItem().toString());
 
 
     }
