@@ -52,6 +52,17 @@ public class Presenter {
         candidateArray.clear();
         ArrayList<CandidateModel> result;// = new ArrayList<>();
         result = candidateDAO.getCandidates();
+        /////
+      /*  candidateArray.clear();
+        candidateArray.add(new CandidateModel("alessio@gioia.it", "alessio", "gioia"));
+        candidateArray.add(new CandidateModel("michele@gioia.it", "michele", "gioia"));
+        candidateArray.add(new CandidateModel("antonio@gioia.it", "antonio", "gioia"));
+        candidateArray.add(new CandidateModel("lucia@gioia.it", "lucia", "gioia"));
+        candidateArray.add(new CandidateModel("marica@gioia.it", "marica", "gioia"));
+        candidateArray.add(new CandidateModel("debora@gioia.it", "debora", "gioia"));
+        candidateArray.add(new CandidateModel("teo@gioia.it", "teo", "gioia"));
+        candidateArray.add(new CandidateModel("elisa@gioia.it", "elisa", "gioia")); */
+        /////
         for(int i=0; i<result.size();i++){
             candidateArray.add(result.get(i));
         }
